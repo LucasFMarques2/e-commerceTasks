@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
      }
 
      body, input, textArea, button{
-        font: 400 1.6rem Roboto, sans-serif;
+        font: 400 1.6rem Lato, sans-serif;
      }
 
 `
