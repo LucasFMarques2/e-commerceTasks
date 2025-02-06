@@ -19,18 +19,23 @@ export function Header() {
                 <IoSearch size={20} />
             </InputContainer>
             
-            <MenuContainer>
+            <MenuContainer >
+               <MenuItem className="account">
+                    <FaRegUser size={20} /> Minha conta
+               </MenuItem>
+
                 <MenuItem>
-                    <TiShoppingCart size={20} />
+                    <TiShoppingCart size={22} />
                     <span>+99</span>
                 </MenuItem>
+
             </MenuContainer>
 
             {isOpen && (
                 <BurgerMenu>
                     <BurgerContent>
                         <MenuItem>
-                            <FaRegUser size={20} /> Minha conta
+                             <FaRegUser size={20} /> Minha conta
                         </MenuItem>
                     </BurgerContent>
                 </BurgerMenu>

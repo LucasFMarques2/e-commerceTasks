@@ -1,7 +1,7 @@
 export const defaultTheme = {
     COLORS:{
         BLACK: '#000000',
-        WHITE: '#FFFFF',
+        WHITE: '#FFFFFF',
         RED: '#f91836',
 
         GRAY_100: '#F2F2F2',

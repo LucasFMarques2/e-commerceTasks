@@ -62,10 +62,15 @@ export const MenuContainer = styled.div`
     align-items: center;
     gap: 2rem;
 
+
     @media (max-width: 768px) {
         position: absolute;
         right: 2rem;
         top: 1.5rem;
+       
+        .account{
+            display: none;
+        }
     }
 `;
 
@@ -94,12 +99,13 @@ export const MenuItem = styled.button`
         justify-content: center;
         align-items: center;
         color: white;
+        box-sizing: content-box;
+        padding: .3rem;
     }
 
     @media (max-width: 768px) {
         span{
-          padding: .5rem;
-          box-sizing: content-box;
+            padding: .5rem;
         }
     }
 `;
