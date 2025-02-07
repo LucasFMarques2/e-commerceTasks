@@ -1,5 +1,6 @@
-import { HomeContainer, ProductsContainer, ProductItens } from "./styles";
-import { Header } from "@components/header";
+import { HomeContainer, ContentContainer,ProductsContainer, ProductItens } from "./styles";
+import { Header } from "@components/Header";
+import { Footer } from "@components/Footer";
 import { Products } from "./components/Products";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -10,6 +11,7 @@ import sapato2 from '@assets/sapato2.svg';
 import sapato3 from '@assets/sapato1.svg';
 import cinto from '@assets/cinto.svg';
 import sandalha from '@assets/sandatlha.svg';
+import { ShopCart } from "@components/ShopCart";
 
 const Produtos = [
     {
@@ -125,6 +127,7 @@ const Produtos = [
 export function Home() {
   const [slidePreView, setSliderPerView] = useState(3);
   const [isMobile, setIsMobile] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     function handleResize() {
@@ -153,10 +156,16 @@ export function Home() {
   };
 
   const categoriesOrder = ["acessorio", "roupas", "calcado"];
+  
+  function toggleCart() {
+    setIsCartOpen(!isCartOpen);
+  }
 
   return (
     <HomeContainer>
-      <Header/>
+      <Header toggleCart={toggleCart} />
+      {isCartOpen && <ShopCart closeCart={toggleCart} />}
+      <ContentContainer>
       {categoriesOrder.map((category) => {
         const productsInCategory = groupedProducts[category] || [];
         return (
@@ -183,6 +192,8 @@ export function Home() {
           </ProductsContainer>
         );
       })}
+      </ContentContainer>
+      <Footer/>
     </HomeContainer>
   );
 }

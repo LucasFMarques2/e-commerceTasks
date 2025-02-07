@@ -6,12 +6,16 @@ export const ProductsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 20rem;
-    
+    cursor: pointer;
+
     img{
         width: 100%;
+        transition: transform .2s;
     }
 
-    cursor: pointer;
+    img:hover{
+        transform: scale(1.1);
+    }
    
     div:hover{
         background: ${({ theme }) => theme.COLORS.GRAY_100};

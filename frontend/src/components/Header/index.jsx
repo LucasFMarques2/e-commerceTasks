@@ -5,7 +5,8 @@ import { FaRegUser } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import logo from '@assets/logo.svg';
 
-export function Header() {
+// eslint-disable-next-line react/prop-types
+export function Header({ toggleCart }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -24,9 +25,9 @@ export function Header() {
                     <FaRegUser size={20} /> Minha conta
                </MenuItem>
 
-                <MenuItem>
+                <MenuItem onClick={toggleCart}>
                     <TiShoppingCart size={22} />
-                    <span>+99</span>
+                    <span>2</span>
                 </MenuItem>
 
             </MenuContainer>

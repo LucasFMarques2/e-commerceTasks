@@ -1,14 +1,23 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
+   display: flex;
+   flex-direction: column;
    height: 100vh;
+   overflow: hidden;
+`
+
+export const ContentContainer = styled.div`
+   flex: 1;
+   overflow-y: auto;
+   padding: 2rem;
 `
 
 export const ProductsContainer = styled.div`
    display: flex;
    flex-direction: column;
    width: 50%;
-   margin: 10rem auto;
+   margin: 5rem auto;
    
    h4{
      display: block;
