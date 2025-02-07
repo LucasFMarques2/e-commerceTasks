@@ -1,6 +1,10 @@
-import { HomeContainer } from "./styles";
+import { HomeContainer, ProductsContainer,  ProductItens } from "./styles";
 import { Header } from "@components/header";
 import { Products } from "./components/Products";
+import { Swiper, SwiperSlide} from 'swiper/react'
+import { Navigation, Pagination } from 'swiper/modules';
+import { useState, useEffect } from "react";
+
 import sapato1 from '@assets/sapato1.svg'
 import sapato2 from '@assets/sapato2.svg'
 import sapato3 from '@assets/sapato1.svg'
@@ -52,26 +56,45 @@ const Produtos = [
   ];
 
 export function Home(){
+    const [slidePreView, setSliderPerView] = useState(3)
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        function handleResize() {
+            setSliderPerView(window.innerWidth < 750 ? 2 : 3);
+            setIsMobile(window.innerWidth < 750 ? true : false);
+        }
+    
+        window.addEventListener("resize", handleResize);
+        handleResize();
+    
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return(
         <HomeContainer>
-            <Header/>
-            <h1>Home</h1>
-            <Products
-                title="sapato"
-                price={250}
-                img={sapato1}
-            />
-             <Products
-                title="sapato"
-                discount={10}
-                price={200}
-                img={sapato2}
-            />
-            <Products
-                title="sapato"
-                price={100}
-                img={sapato2}
-            />
+          <Header/>
+          <ProductsContainer>
+            <h4>Mais vendidos</h4>
+            <ProductItens>
+              <Swiper 
+                slidesPerView={slidePreView} 
+                pagination={isMobile && { clickable: true }}
+                navigation={!isMobile && { clickable: true }}
+                modules={[Navigation, Pagination]}
+              >
+                {Produtos.map((produto) => (
+                  <SwiperSlide key={produto.id}  className="swiperSlider" >
+                    <Products
+                      img={produto.img}
+                      title={produto.nome}
+                      price={produto.preco}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </ProductItens>
+          </ProductsContainer>
         </HomeContainer>
     )
 }

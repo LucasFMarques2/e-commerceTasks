@@ -6,7 +6,7 @@ export const ProductsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 20rem;
-    color: black;
+    
     img{
         width: 100%;
     }
@@ -15,6 +15,12 @@ export const ProductsContainer = styled.div`
    
     div:hover{
         background: ${({ theme }) => theme.COLORS.GRAY_100};
+    }
+
+    @media(max-width: 765px){
+        img{
+            width: 50%;
+        }
     }
 `
 
@@ -59,6 +65,26 @@ export const InformationContainer = styled.div`
         transform: scale(1.1);
     }
 
-   
+    @media(max-width: 765px){
+       width: 70%;
+       padding: 0;
+       margin-bottom: 5rem;
+
+       h3{
+        font-size: 1.3rem;
+        }
+
+        strong{
+            font-size: 1.8rem;
+        }
+        
+        span{
+            font-size: 1rem;
+        }
+
+        button{
+            padding: 0.5rem 2rem 1rem;
+        }
+    }
 
 `
