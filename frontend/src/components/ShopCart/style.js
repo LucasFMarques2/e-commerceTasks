@@ -46,15 +46,15 @@ export const ItensContainer = styled.div`
     border: 1px solid ${({ theme }) => theme.COLORS.GRAY_200};
     background-color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-`
+    
+    `
 
 export const ItemContainer = styled.div`
     display: flex;
+    margin-left: -1rem;
     justify-content: space-evenly;
     gap: 2rem;
     border-bottom: 1px solid ${({ theme }) => theme.COLORS.GRAY_200};
-
     img{
       width: 10rem;
     }

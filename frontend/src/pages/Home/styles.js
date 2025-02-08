@@ -40,6 +40,7 @@ export const ProductsContainer = styled.div`
 
    @media(max-width: 865px){
       width: 90%;
+      margin: -2rem auto;
    }
 `
 

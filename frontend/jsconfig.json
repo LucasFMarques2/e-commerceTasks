@@ -8,7 +8,8 @@
         "@pages/*": ["pages/*"],
         "@storage/*": ["storage/*"],
         "@context/*": ["context/*"],
-        "@services/*": ["services/*"]
+        "@services/*": ["services/*"],
+        "@layouts":  ["layouts/*"]
       }
     },
     "include": ["src"]
