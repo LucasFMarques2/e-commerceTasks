@@ -111,10 +111,16 @@ export function Header({ toggleCart, products }) {
 
       {isOpen && (
         <BurgerMenu>
-          <BurgerContent>
-            <MenuItem>
-              <FaRegUser size={20} /> Minha conta
+            <BurgerContent>
+            {user ?
+            <MenuItem className="account" onClick={signOut}> 
+              <FaPowerOff/> Sair
             </MenuItem>
+          : (
+            <MenuItem className="account" onClick={()=> navigate('/login')}>
+                <FaRegUser/> Minha conta 
+            </MenuItem>
+          )}
           </BurgerContent>
         </BurgerMenu>
       )}

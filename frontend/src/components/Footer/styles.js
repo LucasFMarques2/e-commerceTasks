@@ -23,12 +23,12 @@ export const ContactContainer = styled.div`
         border: none;
         border-radius: 8px;
         cursor: pointer;
+        width: 25rem;
     }
 
     a{
-      display: flex;
+       display: flex;
         padding: 1rem 1em;
-        width: 25rem;
         justify-content: center;
         align-items: center;
 
@@ -47,6 +47,8 @@ export const ContactContainer = styled.div`
       gap: 1rem;
       button{
         width: 15rem;
+      }
+      a{
         font-size: 1rem;
       }
     }
