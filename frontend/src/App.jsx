@@ -3,7 +3,7 @@ import { GlobalStyle } from "./styles/globa"
 import { defaultTheme } from "./styles/themes/defaultTheme"
 import { register } from 'swiper/element/bundle'
 import { CartProvider } from "@context/CartContext"
-import {Router} from '@routes/index'
+import { Router } from '@routes/index'
 
 register()
 import 'swiper/css'
