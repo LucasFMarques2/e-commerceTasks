@@ -1,11 +1,51 @@
 import { useCart } from "@context/CartContext"
+import { useAuth } from "@context/useAuth"
 import { CartContainer, ItemContainer, ItensContainer, DivisorContainer, TotalPriceContainer } from "./style"
 import { FaRegTrashAlt, FaPlus, FaMinus, FaArrowRight } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 import logo from "@assets/logo.svg"
+import { api } from "@services/api"
 
-// eslint-disable-next-line react/prop-types
 export function ShopCart({ closeCart }) {
-  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, totalPrice } = useCart()
+  const navigate = useNavigate()
+  const { 
+        cartItems, 
+        removeFromCart, 
+        increaseQuantity, 
+        decreaseQuantity, 
+        totalPrice 
+  } = useCart()
+  const { user } = useAuth();
+
+  async function transferCartToWishlist() {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      const cartItems = JSON.parse(storedCart);
+      if (cartItems.length > 0) {
+        const wishlistItems = cartItems.map(item => ({
+          productId: item.id, 
+          quantity: item.quantity
+        }));
+        await api.put("/user/wishlist", { items: wishlistItems });
+        localStorage.removeItem("cart");
+        localStorage.removeItem("cartExpiry");
+      }
+    }
+  }
+
+  const handlePurchase = async () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }else{
+      navigate('/checkout')
+      transferCartToWishlist()
+      return;
+    }
+
+  };
+
+  
   return (
     <CartContainer>
       <div className="Header">
@@ -19,8 +59,8 @@ export function ShopCart({ closeCart }) {
             <ItemContainer key={item.id}>
               <img src={item.image} alt={item.name} />
               <DivisorContainer>
-                <span>{item.name}</span>
-                <span>R$ {item.price.toFixed(2)}</span>
+                <p>{item.name}</p>
+                <p>R$ {item.price.toFixed(2)}</p>
               </DivisorContainer>
               <DivisorContainer>
                 <button onClick={() => removeFromCart(item.id)}>
@@ -43,7 +83,7 @@ export function ShopCart({ closeCart }) {
       {cartItems.length > 0 && (
         <TotalPriceContainer>
           <h2>Subtotal: R$ {totalPrice.toFixed(2)}</h2>
-          <button>Comprar <FaArrowRight size={12} /></button>
+          <button onClick={handlePurchase}>Comprar <FaArrowRight size={12} /></button>
         </TotalPriceContainer>
       )}
     </CartContainer>

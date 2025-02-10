@@ -20,7 +20,13 @@ export const ContactContainer = styled.div`
     gap: 3rem;
 
     > button{
-        display: flex;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    a{
+      display: flex;
         padding: 1rem 1em;
         width: 25rem;
         justify-content: center;
@@ -29,11 +35,7 @@ export const ContactContainer = styled.div`
         gap: 1rem;
         font-size: 1.4rem;
         font-weight: bold;
-
-        border: none;
-        border-radius: 8px;
-
-        cursor: pointer;
+        color: ${({ theme}) => theme.COLORS.BLACK};
     }
 
     > button:hover{

@@ -39,8 +39,8 @@ export const ProductsContainer = styled.div`
    }
 
    @media(max-width: 865px){
-      width: 90%;
-      margin: -2rem auto;
+      width: 100%;
+      margin: 0  auto;
    }
 `
 

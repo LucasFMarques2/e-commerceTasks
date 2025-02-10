@@ -14,17 +14,17 @@ export const CartContainer = styled.aside`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     border-left: 1px solid ${({ theme }) => theme.COLORS.GRAY_200};
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
-   
+    
     div::-webkit-scrollbar-thumb{
         background: ${({ theme }) => theme.COLORS.BLACK};
         border-radius: 4px;
     }
-
+    
     .Header{
         display: flex;
         justify-content: space-between;
         margin-bottom: 5rem;
-
+        
         button{
             border: none;
             background: transparent;
@@ -32,11 +32,11 @@ export const CartContainer = styled.aside`
             color: ${({ theme }) => theme.COLORS.GRAY_300};
         }
     }
-
+    
     @media(max-width: 865px){
-
+        
     }
-`
+    `
 
 export const ItensContainer = styled.div`
     padding: 1rem 2rem;
@@ -52,11 +52,14 @@ export const ItensContainer = styled.div`
 export const ItemContainer = styled.div`
     display: flex;
     margin-left: -1rem;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 2rem;
     border-bottom: 1px solid ${({ theme }) => theme.COLORS.GRAY_200};
     img{
       width: 10rem;
+      height: 10rem;
+      object-fit: cover; 
+      padding: 1rem;
     }
 `
 
@@ -64,8 +67,10 @@ export const DivisorContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    
 
-    span{
+
+    p{
         font-weight: bold;
     }
 

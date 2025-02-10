@@ -65,7 +65,7 @@ export const MenuContainer = styled.div`
             display: none;
         }
     }
-`;
+`
 
 export const MenuItem = styled.button`
     font-size: 1.4rem;
@@ -101,7 +101,7 @@ export const MenuItem = styled.button`
             padding: .5rem;
         }
     }
-`;
+`
 
 export const BurgerMenu = styled.div`
     position: absolute;
@@ -114,7 +114,7 @@ export const BurgerMenu = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
+`
 
 export const BurgerContent = styled.div`
     display: flex;
@@ -122,8 +122,7 @@ export const BurgerContent = styled.div`
     gap: 1rem;
     width: 100%;
     align-items: center;
-`;
-
+`
 
 export const SearchResultsContainer = styled.div`
   position: absolute;
@@ -139,14 +138,14 @@ export const SearchResultsContainer = styled.div`
   max-height: 300px;
   overflow-y: auto;
   z-index: 10; 
-`;
+`
 
 
 export const SearchItem = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 10px;
+  padding: 1rem;
   cursor: pointer;
   transition: background 0.2s;
 
@@ -156,26 +155,42 @@ export const SearchItem = styled.div`
   }
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: .5rem;
+    flex-shrink: 0
   }
 
   div {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
   }
 
   h4 {
-    font-size: 14px;
+    font-size: 1.4rem;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   p {
-    font-size: 12px;
-    color: #777;
+    font-size: 1.2rem;
+    color: ${({ theme }) => theme.COLORS.GRAY_300};
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
+  @media (max-width: 768px) {
+    img {
+      position: static;
+      display: block;
+    }
+
+  }
 `;

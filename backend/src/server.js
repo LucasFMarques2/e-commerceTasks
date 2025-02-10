@@ -1,13 +1,23 @@
 const express = require("express") 
-const cors = require("cors")
-const app = express()
 const AppError = require("./utils/AppError")
 const connectDB = require("./database/index");
+const createDefaultAdmin = require('./utils/createDefaultAdmin');
 const router = require("./routes")
 
+const cors = require("cors")
+const app = express()
+
+
 app.use(cors())
-connectDB();
 app.use(express.json());
+
+connectDB().then(() => {
+    createDefaultAdmin();
+}).catch((err) => {
+    console.error('Erro ao conectar ao banco de dados:', err);
+})
+
+
 app.use(router);
 
 app.get("/", (req, res)=>{

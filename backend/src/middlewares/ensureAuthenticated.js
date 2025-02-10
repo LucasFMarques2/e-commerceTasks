@@ -1,18 +1,41 @@
-const jwt = require('jsonwebtoken')
-const authConfig = require('../configs/auth')
+const authConfig = require('../configs/auth');
+const User = require('../database/models/User');
+const AppError = require("../utils/AppError");
+const { verify } = require('jsonwebtoken'); 
 
-module.exports = (req, res, next) => {
-    const token = req.header('Authorization')
+function ensureAuthenticated(role) {
+  return async (req, res, next) => {
+    const authHeader = req.headers.authorization;
 
-    if(!token){
-        return res.status(401).json({ message: 'Acesso negado'})
+    if (!authHeader) {
+      return next(new AppError("JWT não informado", 401));
     }
 
+    const [, token] = authHeader.split(" "); 
+
     try {
-        const decoded = jwt.verify(token, authConfig.jwt.secret);
-        req.user = decoded; 
-        next();
-      } catch (error) {
-        return res.status(400).json({ message: 'Token inválido' });
+      const decoded = verify(token, authConfig.jwt.secret);
+      const user = await User.findById(decoded.sub);
+
+      if (!user) {
+        return next(new AppError("Usuário não encontrado", 401));
       }
+
+      req.user = {
+        id: user._id,
+        isAdmin: user.isAdmin
+      };
+
+      if (role && role === "isAdmin" && !req.user.isAdmin) {
+        return next(new AppError("Acesso restrito a administradores", 403));
+      }
+
+      return next();
+            
+    } catch (error) {
+      return next(new AppError("JWT token inválido", 401));
+    }
+  }
 }
+
+module.exports = ensureAuthenticated;

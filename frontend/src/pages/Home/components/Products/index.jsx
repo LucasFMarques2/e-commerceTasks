@@ -1,7 +1,7 @@
 import { ProductsContainer, InformationContainer } from "./style"
 import { useCart } from "@context/CartContext"
+import { Link } from "react-router-dom"; 
 
-// eslint-disable-next-line react/prop-types
 export function Products({ id, title, img, price, discount = 0 }) {
   const { addToCart } = useCart()
  
@@ -20,18 +20,21 @@ export function Products({ id, title, img, price, discount = 0 }) {
  
   const handleAddToCart = () => {
     const product = {
-      id: id,
+      id: id, 
       name: title,
       image: img,
       price: price,
       quantity: 1
     }
+    console.log("ID do produto:", id);
     addToCart(product)
   }
  
   return (
     <ProductsContainer>
-      <img src={img} alt="" />
+      <Link to={`/produto/${id}`}>
+          <img src={img} alt="" />
+        </Link>
       <InformationContainer>
         <h3>{title}</h3>
         {discount > 0

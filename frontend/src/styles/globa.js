@@ -33,4 +33,14 @@ export const GlobalStyle = createGlobalStyle`
         font: 400 1.6rem Lato, sans-serif;
      }
 
+     a{
+        text-decoration: none;
+     }
+
+     input[type="number"]::-webkit-outer-spin-button,
+     input[type="number"]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+     }
+
 `
