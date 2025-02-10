@@ -30,8 +30,10 @@ Projeto realizado para teste seletivo da empresa filter
 
 ## Deploy
 
-A aplicação frontend está disponível em: [e-commerce][(https://geekshops2.vercel.app/)]
-A aplicação backend está disponível em: [e-commerce][(https://ecommerceapishop.onrender.com/)]
+A aplicação frontend está disponível em: [e-commerce](https://geekshops2.vercel.app/)
+
+A aplicação backend está disponível em: [e-commerce](https://ecommerceapishop.onrender.com/)
+
 
 ## Instruções para Execução Local
 
