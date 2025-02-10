@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@context/useAuth";
 import { useState, useEffect } from "react";
-import { useCart } from "@context/CartContext";
 import { LoginContainer, FormContainer } from "./styles";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { useCart } from "@context/CartContext";
 import logo from '@assets/logo.svg';
 
 export function Login() {
@@ -11,26 +11,31 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); 
   const { signIn, user } = useAuth();
+  const { cartItems } = useCart()
   const navigate = useNavigate();
-  const { cartItems } = useCart();
 
   async function handleSignIn(event) {
     event.preventDefault();
     setLoading(true);
-    await signIn({ email, password });
- 
-  }
 
-    useEffect(() => {
-    if (user) {
-      if (cartItems.length > 0) {
-        navigate('/checkout'); 
-      } else {
-        navigate('/'); 
-      }
+    try {
+      await signIn({ email, password }); 
+    } catch (error) {
+      console.error("Erro no login:", error);
+    } finally {
       setLoading(false);
     }
-  }, [user, cartItems, navigate])
+  }
+
+  useEffect(() => {
+    if (user) {
+      if (cartItems.length > 0) {
+        navigate('/checkout');
+      } else {
+        navigate('/');
+      }
+    }
+  }, [user, cartItems, navigate]);
 
   return (
     <LoginContainer>
