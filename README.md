@@ -80,6 +80,16 @@ Para executar a aplicação em sua máquina local, siga os seguintes passos:
 - Teste unitários
 - Swagger para documentação
 
+## Futuras implementações
+- Tela de admin
+- Criação de novos produtos
+- Salvar imagens diretamente no backend
+- Lista de desejo do cliente
+- Lista de produtos já comprados
+- Calculo de frente
+- Cupons de desconto
+- Envio de newLatter para clientes
+
 Desenvolvido por Lucas Freitas Marques baseado no layout do [Figman]([(https://www.figma.com/design/hWEJZwNAjzXaP0DL23GMOF/E-commerce?node-id=0-1&p=f&t=4S8jXGUyWWtgug5B-0)])
 
 
